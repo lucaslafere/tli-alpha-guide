@@ -10,11 +10,8 @@ export default function Navbar() {
         </Link>
         <div className="nav-links">
           <Link to="/">Guides</Link>
-          <a href="https://www.torchlight.game/" target="_blank" rel="noopener noreferrer">
-            Official Site
-          </a>
         </div>
       </div>
     </nav>
-  )
+  );
 }

@@ -1,22 +1,13 @@
-import axios from "  useEffect(() => {
-    if (!guideId) return;
-    axios
-      .get<Guide>(`http://localhost:4001/api/guides/${guideId}`)
-      .then((r: { data: Guide }) => setGuide(r.data))
-      .catch(() => setGuide(null))
-  }, [guideId]);;
-import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+type Item = { title: string; content: string; type?: string; open?: boolean };
+type Section = { id: string; title: string; items: Item[]; open?: boolean };
+type Guide = { id: string; title: string; hero: string; sections: Section[] };
+
 export default function GuidePage() {
-  const { guideId } = useParams();rt axios from 'axios';
-import React, { useEffect, useState } from 'react';
-
-export default function GuidePage({ id }: { id: string }) {
-  type Item = { title: string; content: string; type?: string; open?: boolean };
-  type Section = { id: string; title: string; items: Item[]; open?: boolean };
-  type Guide = { id: string; title: string; hero: string; sections: Section[] };
-
+  const { guideId } = useParams();
   const [guide, setGuide] = useState<Guide | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [uploadSection, setUploadSection] = useState<string | null>(null);
@@ -24,11 +15,13 @@ export default function GuidePage({ id }: { id: string }) {
   const [allExpanded, setAllExpanded] = useState(false);
 
   useEffect(() => {
+    if (!guideId) return;
+
     axios
-      .get<Guide>(`http://localhost:4001/api/guides/${id}`)
-      .then((r: { data: Guide }) => setGuide(r.data))
+      .get<Guide>(`http://localhost:4001/api/guides/${guideId}`)
+      .then((r) => setGuide(r.data))
       .catch(() => setGuide(null));
-  }, [id]);
+  }, [guideId]);
 
   function toggleSection(secId: string) {
     setGuide((g: Guide | null) => {
@@ -36,21 +29,6 @@ export default function GuidePage({ id }: { id: string }) {
       return {
         ...g,
         sections: g.sections.map((s) => (s.id === secId ? { ...s, open: !s.open } : s)),
-      };
-    });
-  }
-
-  function toggleAll() {
-    setAllExpanded((prev) => !prev);
-    setGuide((g) => {
-      if (!g) return g;
-      return {
-        ...g,
-        sections: g.sections.map((s) => ({
-          ...s,
-          open: !allExpanded,
-          items: s.items.map((it) => ({ ...it, open: !allExpanded })),
-        })),
       };
     });
   }
@@ -74,17 +52,34 @@ export default function GuidePage({ id }: { id: string }) {
     });
   }
 
+  function toggleAll() {
+    setAllExpanded((prev) => !prev);
+    setGuide((g) => {
+      if (!g) return g;
+      return {
+        ...g,
+        sections: g.sections.map((s) => ({
+          ...s,
+          open: !allExpanded,
+          items: s.items.map((it) => ({ ...it, open: !allExpanded })),
+        })),
+      };
+    });
+  }
+
   function save() {
-    if (!guide) return;
-    axios.put<Guide>(`http://localhost:4001/api/guides/${id}`, guide).then((r) => setGuide(r.data));
+    if (!guide || !guideId) return;
+    axios
+      .put<Guide>(`http://localhost:4001/api/guides/${guideId}`, guide)
+      .then((r) => setGuide(r.data));
   }
 
   async function uploadImage() {
-    if (!file || !guide) return;
+    if (!file || !guide || !guideId) return;
     const fd = new FormData();
     fd.append('file', file);
     if (uploadSection) fd.append('sectionId', uploadSection);
-    const resp = await axios.post(`http://localhost:4001/api/guides/${id}/uploads`, fd, {
+    const resp = await axios.post(`http://localhost:4001/api/guides/${guideId}/uploads`, fd, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     const { url, sectionId } = resp.data as { url: string; sectionId: string };
@@ -179,8 +174,6 @@ export default function GuidePage({ id }: { id: string }) {
                             }}
                           />
                         ) : it.type === 'image' ? (
-                          // render images inline
-                          // content stores the relative URL (/uploads/filename)
                           <img
                             src={it.content}
                             alt={it.title}

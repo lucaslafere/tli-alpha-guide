@@ -7,9 +7,9 @@ import Navbar from './components/Navbar';
 export default function App() {
   return (
     <BrowserRouter>
-      <div className='app-root'>
+      <div className="app-root">
         <Navbar />
-        <main className='main-content'>
+        <main className="main-content">
           <Routes>
             <Route path="/" element={<GuidesListPage />} />
             <Route path="/guides/:guideId" element={<GuidePage />} />
