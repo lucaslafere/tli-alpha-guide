@@ -25,5 +25,6 @@ npm run dev
 Frontend runs on http://localhost:5173
 
 Notes:
+
 - Guides are stored in `backend/data/guides.json`.
 - Admin editing in the UI does a PUT to `/api/guides/:id` and updates the JSON file.
