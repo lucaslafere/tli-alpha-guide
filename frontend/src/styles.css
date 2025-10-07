@@ -2,83 +2,319 @@
   --bg: #0b0b0d;
   --card: #0f0e14;
   --accent: #9b7cff;
+  --accent-hover: #a88cff;
   --muted: #bfb8dd;
+  --gray-100: #eee;
+  --gray-200: #ccc;
+  --gray-300: #aaa;
+  --gray-800: #222;
+  --navbar-height: 60px;
 }
+
 body {
   margin: 0;
   font-family: Inter, Segoe UI, Arial;
   background: var(--bg);
-  color: #eee;
+  color: var(--gray-100);
 }
-.topbar {
-  background: linear-gradient(90deg, rgba(155, 124, 255, 0.08), transparent);
-  padding: 16px;
-}
-.container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-}
-.sidebar {
-  width: 260px;
+
+.navbar {
+  height: var(--navbar-height);
   background: var(--card);
-  padding: 12px;
-  border-radius: 8px;
+  border-bottom: 1px solid rgba(155, 124, 255, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
-.main {
-  flex: 1;
-  background: #0b0b0d;
-  padding: 12px;
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.guide-list {
-  list-style: none;
-  padding: 0;
+
+.nav-logo {
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--gray-100);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: var(--navbar-height) auto 0;
+  padding: 40px 20px;
+}
+
+.guides-page {
+  padding: 20px 0;
+}
+
+.guides-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.guides-header h1 {
+  color: var(--accent);
   margin: 0;
+  font-size: 32px;
 }
-.guide-list li {
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
 }
-.guide-list li:hover {
-  background: rgba(155, 124, 255, 0.06);
+
+.guide-card {
+  background: var(--card);
+  border: 1px solid rgba(155, 124, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--gray-100);
+  transition: transform 0.2s, border-color 0.2s;
 }
+
+.guide-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.guide-card h2 {
+  color: var(--accent);
+  margin: 0 0 8px 0;
+  font-size: 20px;
+}
+
+.guide-card .guide-hero {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .muted {
   color: var(--muted);
   font-size: 12px;
 }
+
+.guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
 .guide-page h2 {
   color: var(--accent);
+  margin: 0 0 8px 0;
 }
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  background: var(--gray-800);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: var(--card);
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--gray-100);
+}
+
+.btn.primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn.secondary {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn.secondary:hover {
+  background: rgba(155, 124, 255, 0.1);
+}
+
 .section {
-  background: #0f0e14;
+  background: var(--card);
   margin-top: 12px;
   padding: 10px;
   border-radius: 8px;
+  border: 1px solid rgba(155, 124, 255, 0.1);
 }
+
 .section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
 }
+
+.section-head:hover {
+  background: rgba(155, 124, 255, 0.06);
+}
+
+.section-head h3 {
+  margin: 0;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.chevron::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--gray-300);
+  border-bottom: 2px solid var(--gray-300);
+  transform: translate(-50%, -75%) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.section-head.open .chevron::before {
+  transform: translate(-50%, -25%) rotate(-135deg);
+}
+
+.section-body {
+  padding: 12px 8px 4px;
+}
+
+.item {
+  margin-bottom: 16px;
+  background: rgba(155, 124, 255, 0.02);
+  border-radius: 6px;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.item-head:hover {
+  background: rgba(155, 124, 255, 0.06);
+}
+
+.item-head h4 {
+  color: var(--accent);
+  margin: 0;
+  font-size: 15px;
+}
+
+.item-head .chevron {
+  width: 16px;
+  height: 16px;
+}
+
+.item-head .chevron::before {
+  width: 6px;
+  height: 6px;
+  border-width: 1.5px;
+}
+
+.item-body {
+  padding: 12px;
+  border-top: 1px solid rgba(155, 124, 255, 0.08);
+}
+
 textarea {
   width: 100%;
-  height: 120px;
+  min-height: 120px;
+  background: var(--bg);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-800);
+  border-radius: 4px;
+  padding: 8px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 .uploader {
-  margin-top: 12px;
-  padding: 10px;
+  margin-top: 24px;
+  padding: 16px;
   background: rgba(155, 124, 255, 0.03);
   border-radius: 8px;
+  border: 1px dashed var(--accent);
 }
-.uploader input[type="file"] {
-  display: block;
-  margin-top: 8px;
+
+.uploader h4 {
+  margin: 0 0 12px;
+  color: var(--accent);
 }
+
 .uploader select {
+  width: 100%;
+  max-width: 300px;
+  background: var(--bg);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-800);
+  border-radius: 4px;
+  padding: 6px;
+  margin: 8px 0;
+}
+
+.uploader select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.uploader input[type='file'] {
   display: block;
-  margin-top: 6px;
-}
-.uploader button {
-  margin-top: 8px;
-}
+  margin: 12px 0;
 }
