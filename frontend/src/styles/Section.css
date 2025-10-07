@@ -1,0 +1,148 @@
+.section {
+  background: var(--card);
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(155, 124, 255, 0.1);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.section-head:hover {
+  background: rgba(155, 124, 255, 0.06);
+}
+
+.section-head h3 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.section-title-input {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 16px;
+  padding: 0.25rem 0.5rem;
+  margin: -0.25rem 0;
+  width: 300px;
+  font-weight: bold;
+}
+
+.section-title-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.section-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-body {
+  padding: 12px 8px 4px;
+}
+
+.section-upload {
+  margin: 0 0 1rem;
+  background: rgba(155, 124, 255, 0.02);
+}
+
+.section-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.section-item.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.item {
+  background: rgba(155, 124, 255, 0.02);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.item-head:hover {
+  background: rgba(155, 124, 255, 0.06);
+}
+
+.item-head h4 {
+  color: var(--accent);
+  margin: 0;
+  font-size: 15px;
+}
+
+.item-title-input {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 15px;
+  padding: 0.25rem 0.5rem;
+  margin: -0.25rem 0;
+  width: 200px;
+}
+
+.item-title-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-body {
+  padding: 1rem;
+  border-top: 1px solid rgba(155, 124, 255, 0.08);
+}
+
+.btn.add-subsection {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 14px;
+  background: rgba(155, 124, 255, 0.02);
+}
+
+.btn.add-section {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 15px;
+  background: rgba(155, 124, 255, 0.02);
+  border: 2px dashed var(--border-color);
+}
+
+.btn.add-section:hover {
+  border-color: var(--accent);
+  background: rgba(155, 124, 255, 0.04);
+}
