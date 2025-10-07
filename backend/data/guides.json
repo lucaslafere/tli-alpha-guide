@@ -1,0 +1,23 @@
+[
+  {
+    "id": "iris_growing_breeze",
+    "title": "Iris - The Growing Breeze",
+    "hero": "Iris",
+    "sections": [
+      {
+        "id": "campaign",
+        "title": "Campaign Leveling",
+        "items": [
+          {
+            "title": "Act 1",
+            "content": "Play through Act 1 focusing on movement and survivability. Use skill X and Y."
+          },
+          {
+            "title": "Act 2",
+            "content": "Transition to ability Z, prioritize gear with stat A."
+          }
+        ]
+      }
+    ]
+  }
+]
