@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { Request, Response } from 'express';
 import fs from 'fs';
+import type { Multer } from 'multer';
 import multer from 'multer';
 import path from 'path';
 
@@ -17,6 +18,37 @@ const guidesFile = path.join(dataDir, 'guides.json');
 const uploadsDir = path.join(dataDir, 'uploads');
 
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+
+// Configure multer for image uploads
+const imageStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const imageUpload = multer({
+  storage: imageStorage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    cb(null, allowedTypes.includes(file.mimetype));
+  },
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB
+  },
+});
+
+// Image upload endpoint
+app.post('/api/upload', imageUpload.single('image'), (req: Request, res: Response) => {
+  const file = (req as any).file;
+  if (!file) {
+    return res.status(400).json({ error: 'No image file provided or invalid file type' });
+  }
+  res.json({ url: `/uploads/${file.filename}` });
+});
 
 // serve uploaded files
 app.use('/uploads', express.static(uploadsDir));

@@ -1,0 +1,66 @@
+.rich-text-editor {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rich-text-editor .editor-menu {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card);
+}
+
+.rich-text-editor .editor-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--gray-200);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rich-text-editor .editor-menu button:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.rich-text-editor .editor-menu button.is-active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.rich-text-editor .ProseMirror {
+  padding: 1rem;
+  min-height: 200px;
+  outline: none;
+}
+
+.rich-text-editor .ProseMirror p {
+  margin: 1em 0;
+}
+
+.rich-text-editor .ProseMirror h2 {
+  margin: 1.5em 0 0.5em;
+}
+
+.rich-text-editor .ProseMirror ul,
+.rich-text-editor .ProseMirror ol {
+  padding-left: 2rem;
+}
+
+.rich-text-editor .ProseMirror .editor-image {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 4px;
+}

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { DragDropUpload } from './DragDropUpload';
+import { RichTextEditor } from './RichTextEditor';
 
 type Item = { title: string; content: string; type?: string; open?: boolean };
 type Section = { id: string; title: string; items: Item[]; open?: boolean };
@@ -150,29 +152,36 @@ export default function GuidePage() {
                     {(editMode || it.open) && (
                       <div className="item-body">
                         {editMode ? (
-                          <textarea
-                            value={it.content}
-                            onChange={(e) => {
-                              const val = e.target.value;
-                              setGuide((g) =>
-                                g
-                                  ? ({
-                                      ...g,
-                                      sections: g.sections.map((ss) =>
-                                        ss.id === s.id
-                                          ? {
-                                              ...ss,
-                                              items: ss.items.map((x, i) =>
-                                                i === idx ? { ...x, content: val } : x
-                                              ),
-                                            }
-                                          : ss
-                                      ),
-                                    } as Guide)
-                                  : g
-                              );
-                            }}
-                          />
+                          it.type === 'image' ? (
+                            <img
+                              src={it.content}
+                              alt={it.title}
+                              style={{ maxWidth: '100%', borderRadius: 6 }}
+                            />
+                          ) : (
+                            <RichTextEditor
+                              content={it.content}
+                              onChange={(content) => {
+                                setGuide((g) =>
+                                  g
+                                    ? ({
+                                        ...g,
+                                        sections: g.sections.map((ss) =>
+                                          ss.id === s.id
+                                            ? {
+                                                ...ss,
+                                                items: ss.items.map((x, i) =>
+                                                  i === idx ? { ...x, content } : x
+                                                ),
+                                              }
+                                            : ss
+                                        ),
+                                      } as Guide)
+                                    : g
+                                );
+                              }}
+                            />
+                          )
                         ) : it.type === 'image' ? (
                           <img
                             src={it.content}
@@ -180,7 +189,7 @@ export default function GuidePage() {
                             style={{ maxWidth: '100%', borderRadius: 6 }}
                           />
                         ) : (
-                          <p>{it.content}</p>
+                          <div dangerouslySetInnerHTML={{ __html: it.content }} />
                         )}
                       </div>
                     )}
@@ -206,14 +215,28 @@ export default function GuidePage() {
               </option>
             ))}
           </select>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
+          <DragDropUpload
+            onUpload={async (file) => {
+              const formData = new FormData();
+              formData.append('file', file);
+              if (uploadSection) formData.append('sectionId', uploadSection);
+              const resp = await axios.post(
+                `http://localhost:4001/api/guides/${guideId}/uploads`,
+                formData,
+                {
+                  headers: { 'Content-Type': 'multipart/form-data' },
+                }
+              );
+              return resp.data;
+            }}
+            onSuccess={(url) => {
+              // Reflect change locally
+              if (!guideId) return;
+              axios
+                .get<Guide>(`http://localhost:4001/api/guides/${guideId}`)
+                .then((r) => setGuide(r.data));
+            }}
           />
-          <button onClick={uploadImage} disabled={!file} className="btn primary">
-            Upload
-          </button>
         </div>
       )}
     </div>

@@ -1,0 +1,30 @@
+.drag-drop-upload {
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 1rem 0;
+}
+
+.drag-drop-upload.dragging {
+  border-color: var(--accent);
+  background-color: rgba(155, 124, 255, 0.05);
+}
+
+.drag-drop-upload.uploading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.drag-drop-upload .upload-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--gray-300);
+}
+
+.drag-drop-upload:hover:not(.uploading) {
+  border-color: var(--accent);
+}

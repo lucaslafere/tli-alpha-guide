@@ -10,13 +10,15 @@
         "items": [
           {
             "title": "Act 1",
-            "content": "Play through Act 1 focusing on movement and survivability. Use skill X and Y."
+            "content": "<p>Play through Act 1 focusing on movement and <em>survivability</em>. Use skill <strong>X </strong>and <strong>Y</strong>.</p>",
+            "open": true
           },
           {
             "title": "Act 2",
             "content": "Transition to ability Z, prioritize gear with stat A."
           }
-        ]
+        ],
+        "open": true
       }
     ]
   }
