@@ -1,6 +1,7 @@
 @import './styles/RichTextEditor.css';
 @import './styles/DragDropUpload.css';
 @import './styles/Section.css';
+@import './styles/DragHandle.css';
 
 :root {
   --bg: #0b0b0d;

@@ -1,0 +1,51 @@
+.drag-handle-area {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  cursor: move;
+  z-index: 10;
+}
+
+.drag-handle {
+  padding: 2px 4px;
+  color: var(--gray-300);
+  user-select: none;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 4px;
+  background: var(--card);
+  transition: all 0.2s ease;
+}
+
+.drag-handle:hover {
+  background: rgba(155, 124, 255, 0.1);
+  color: var(--accent);
+}
+
+/* Make the drag handle only appear when hovering over the section head */
+.section-item .drag-handle-area {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.section-item:hover .drag-handle-area {
+  opacity: 1;
+}
+
+/* Make sure the cursor is text when over text content */
+.item-body {
+  cursor: text;
+}
+
+/* Only show move cursor on the drag handle */
+.drag-handle-area {
+  cursor: move;
+}
+
+/* Ensure the rest of the section item has default cursor */
+.section-item {
+  cursor: default;
+}

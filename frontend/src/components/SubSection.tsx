@@ -1,13 +1,4 @@
-import React, { useCallback } from 'react';
-import { DragDropUpload } from './DragDropUpload';
-import { RichTextEditor } from './RichTextEditor';
-
-interface Item {
-  title: string;
-  content: string;
-  type?: string;
-  open?: boolean;
-}
+import React from 'react';
 
 interface SubSectionProps {
   title: string;
@@ -32,18 +23,20 @@ export const SubSection: React.FC<SubSectionProps> = ({
 }) => {
   return (
     <div className="item">
-      <div className={`item-head ${open ? 'open' : ''}`} onClick={onToggle}>
-        {editMode ? (
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => onUpdate(e.target.value, content)}
-            onClick={(e) => e.stopPropagation()}
-            className="item-title-input"
-          />
-        ) : (
-          <h4>{title}</h4>
-        )}
+      <div className={`item-head ${open ? 'open' : ''}`}>
+        <div className="item-title" onClick={onToggle}>
+          {editMode ? (
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => onUpdate(e.target.value, content)}
+              onClick={(e) => e.stopPropagation()}
+              className="item-title-input"
+            />
+          ) : (
+            <h4>{title}</h4>
+          )}
+        </div>
         <div className="item-controls">
           {editMode && onDelete && (
             <button
@@ -56,7 +49,7 @@ export const SubSection: React.FC<SubSectionProps> = ({
               ×
             </button>
           )}
-          <span className="chevron"></span>
+          <span className="chevron" onClick={onToggle}></span>
         </div>
       </div>
       {(editMode || open) && (
@@ -64,10 +57,14 @@ export const SubSection: React.FC<SubSectionProps> = ({
           {type === 'image' ? (
             <img src={content} alt={title} style={{ maxWidth: '100%', borderRadius: 6 }} />
           ) : editMode ? (
-            <RichTextEditor
-              content={content}
-              onChange={(newContent) => onUpdate(title, newContent)}
-            />
+            <div className="editor-container">
+              <div
+                dangerouslySetInnerHTML={{ __html: content }}
+                contentEditable
+                onBlur={(e) => onUpdate(title, e.currentTarget.innerHTML)}
+                style={{ outline: 'none' }}
+              />
+            </div>
           ) : (
             <div dangerouslySetInnerHTML={{ __html: content }} />
           )}

@@ -10,25 +10,25 @@
         "items": [
           {
             "title": "Act 1",
-            "content": "<p>Iris2 Template:</p><p><br>immediately off the spawn, open your skills and equip a thunder magus + activate it so you have 2 magus at level 3, equip elemental duo on rock magus and then replace the other 2 skills with shadow dash at level 4, equip a 3rd shadow dash, only dash when they're at 2 or more cooldowns at level 7, replace rock magus with flame magus + equip inc aoe when you get a pact slot, equip Greedy Chestnut - Lotus Root or Drapion Lady. This is much smoother for leveling because a lot of the XP you gain will be passive from the empower skill killing things, so CDR is arguably better here in the last trove of a1, equip dazzling bloom to help vs final boss of a1, can grind this trove to like 17 or so to get +1 minion in your first tree at 21 you get a 3rd support but at 22 you get ele fusion, make the 3rd support ele fusion at 27 you get mass effect for dazzling bloom, control spell, and magic dash at 34, spell amp at 50, swiftness</p>",
+            "content": "<p><br>Level 3: equip elemental duo on Thunder Magus and then replace the other 2 skills with shadow dash</p><p>Level 4: equip a 3rd shadow dash, only dash when they're at 2 or more charges.</p><p>Level 7: replace Thunder magus with Flame magus + equip inc aoe&nbsp;</p><p>When you get a pact slot, equip Greedy Chestnut - Lotus Root or Drapion Lady. This is much smoother for leveling because a lot of the XP you gain will be passive from the empower skill killing things, so CDR is arguably better here.</p><p>In the last trove of A1, equip Dazzling Bloom to help vs final boss of A1.</p><p>Talents: Min DMG, Cast speed, Crit area (3 pts), Enhanced skill (5 pts), Movement Speed (4 pts) -&gt; can switch for Minion Level if need dmg.</p><p>Second Tree: Alchemist</p>",
             "open": true
           },
           {
             "title": "Act 2",
-            "content": "Transition to ability Z, prioritize gear with stat A.",
-            "open": false
+            "content": "<div>Level 22: Elemental Fusion</div><div>Level 27: Mass Effect (dazzling bloom), control spell</div><div>Level 34: Magic Dash</div><div><br></div><div>Alchemist Talents: Min DMG, Cast Speed (2pts), Crit, Enhanced skill, Dmg + Level.</div>",
+            "open": true
           },
           {
             "title": "Act 3",
-            "content": "",
-            "open": false
+            "content": "<div>Level 50: Spell amplification, swiftness</div><div><br></div><div>Lich Talents: Min dmg, cast speed, crit, ALL STATS, Min DMG, CDR.</div><div>Last tree: Warlord for Fire Magus/Steel Vanguard Thunder Magus</div>",
+            "open": true
           }
         ],
         "open": true
       },
       {
         "id": "section_1759884000254",
-        "title": "Early Maps",
+        "title": "Early Maps (Thunder until Traveler t7 kill)",
         "items": [
           {
             "title": "Skill Setup",
@@ -58,6 +58,75 @@
           {
             "title": "Slates",
             "content": "<p>Don't care too much, +levels always good</p>",
+            "open": false
+          }
+        ],
+        "open": false
+      },
+      {
+        "id": "section_1759886235613",
+        "title": "Getting to Profound",
+        "items": [
+          {
+            "title": "Skill Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Legendary Gear Options",
+            "content": "<p>Early Chest: Corrupted Bulwark (ES)/Martyr Staff (Life), Void Embankment? (DPS), Friend Nemesis (DPS)</p><p>Helmet: Fiend Crown</p><p>Amulet: False God's skin</p><p>Rings: Horn Ring, Windbreath Dispersion (REQUIRED)</p><p>Boots: Mind Infusion</p>",
+            "open": false
+          },
+          {
+            "title": "Rare Gear Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Talents",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Kismets",
+            "content": "<p>Don't care about these early on.<br><br>Pactspirits: Anubis, Drapion, Vale</p>",
+            "open": false
+          },
+          {
+            "title": "Slates",
+            "content": "<p>Don't care too much, +levels always good</p>",
+            "open": false
+          }
+        ],
+        "open": false
+      },
+      {
+        "id": "section_1759888244807",
+        "title": "Best in Slot (Thunder)",
+        "items": [
+          {
+            "title": "Skill Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Gear Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Talents",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Kismets",
+            "content": "<p>Don't care about these early on.<br><br>Pactspirits: Anubis, Drapion, Vale</p>",
+            "open": false
+          },
+          {
+            "title": "Slates",
+            "content": "<p></p>",
             "open": false
           }
         ],

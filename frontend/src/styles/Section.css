@@ -66,11 +66,40 @@
 .section-item {
   position: relative;
   transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-item.dragging {
   opacity: 0.5;
   transform: scale(0.98);
+}
+
+.drag-handle-area {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  cursor: move;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.drag-handle {
+  padding: 2px 4px;
+  color: var(--gray-300);
+  user-select: none;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 4px;
+  background: var(--card);
+  transition: all 0.2s;
+}
+
+.drag-handle:hover {
+  background: rgba(155, 124, 255, 0.1);
+  color: var(--accent);
 }
 
 .item {

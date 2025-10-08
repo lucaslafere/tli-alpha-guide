@@ -137,12 +137,19 @@ export const Section: React.FC<SectionProps> = ({
             {items.map((item, index) => (
               <div
                 key={index}
-                draggable={editMode}
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDragOver={(e) => handleDragOver(e, index)}
-                onDragEnd={handleDragEnd}
                 className={`section-item ${draggingIndex === index ? 'dragging' : ''}`}
               >
+                {editMode && (
+                  <div
+                    className="drag-handle-area"
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDragEnd={handleDragEnd}
+                  >
+                    <div className="drag-handle">⋮⋮</div>
+                  </div>
+                )}
                 <SubSection
                   title={item.title}
                   content={item.content}
