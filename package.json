@@ -2,18 +2,20 @@
   "name": "tli-alpha-guide-monorepo",
   "private": true,
   "devDependencies": {
-    "eslint": "^8.50.0",
-    "prettier": "^2.8.8",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-react": "^7.32.2",
-    "@typescript-eslint/parser": "^6.9.0",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "eslint-plugin-import": "^2.27.5",
+    "@types/cors": "^2.8.12",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@types/cors": "^2.8.12"
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.8"
   },
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx,.js --fix"
+    "lint": "eslint . --ext .ts,.tsx,.js --fix",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
   }
 }
