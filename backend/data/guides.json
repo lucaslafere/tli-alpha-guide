@@ -10,27 +10,58 @@
         "items": [
           {
             "title": "Act 1",
-            "content": "<p>Play through Act 1 focusing on movement and <em>survivability</em>. Use skill <strong>X </strong>and <strong>Y</strong>.</p>",
+            "content": "<p>Iris2 Template:</p><p><br>immediately off the spawn, open your skills and equip a thunder magus + activate it so you have 2 magus at level 3, equip elemental duo on rock magus and then replace the other 2 skills with shadow dash at level 4, equip a 3rd shadow dash, only dash when they're at 2 or more cooldowns at level 7, replace rock magus with flame magus + equip inc aoe when you get a pact slot, equip Greedy Chestnut - Lotus Root or Drapion Lady. This is much smoother for leveling because a lot of the XP you gain will be passive from the empower skill killing things, so CDR is arguably better here in the last trove of a1, equip dazzling bloom to help vs final boss of a1, can grind this trove to like 17 or so to get +1 minion in your first tree at 21 you get a 3rd support but at 22 you get ele fusion, make the 3rd support ele fusion at 27 you get mass effect for dazzling bloom, control spell, and magic dash at 34, spell amp at 50, swiftness</p>",
             "open": true
           },
           {
             "title": "Act 2",
             "content": "Transition to ability Z, prioritize gear with stat A.",
-            "open": true
+            "open": false
           },
           {
             "title": "Act 3",
             "content": "",
-            "open": true
+            "open": false
           }
         ],
-        "open": false
+        "open": true
       },
       {
         "id": "section_1759884000254",
         "title": "Early Maps",
-        "items": [],
-        "open": false
+        "items": [
+          {
+            "title": "Skill Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Legendary Gear Options",
+            "content": "<p>Early Chest: Corrupted Bulwark (ES)/Martyr Staff (Life), Void Embankment? (DPS), Friend Nemesis (DPS)</p><p>Helmet: Fiend Crown</p><p>Amulet: False God's skin</p><p>Rings: Horn Ring, Windbreath Dispersion (REQUIRED)</p><p>Boots: Mind Infusion</p>",
+            "open": false
+          },
+          {
+            "title": "Rare Gear Setup",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Talents",
+            "content": "",
+            "open": false
+          },
+          {
+            "title": "Kismets",
+            "content": "<p>Don't care about these early on.<br><br>Pactspirits: Anubis, Drapion, Vale</p>",
+            "open": false
+          },
+          {
+            "title": "Slates",
+            "content": "<p>Don't care too much, +levels always good</p>",
+            "open": false
+          }
+        ],
+        "open": true
       }
     ]
   }
