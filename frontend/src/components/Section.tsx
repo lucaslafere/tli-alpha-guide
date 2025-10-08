@@ -67,8 +67,8 @@ export const Section: React.FC<SectionProps> = ({
   };
 
   return (
-    <div className="section">
-      <div className={`section-head ${open ? 'open' : ''}`} onClick={onToggle}>
+    <div className={`section ${editMode ? 'editing' : ''}`}>
+      <div className={`section-head ${open ? 'open' : ''}`} onClick={!editMode ? onToggle : undefined}>
         {editMode ? (
           <input
             type="text"

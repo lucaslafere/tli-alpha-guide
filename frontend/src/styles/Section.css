@@ -10,10 +10,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
   padding: 8px 12px;
   border-radius: 4px;
   transition: background 0.2s;
+}
+
+.section:not(.editing) .section-head {
+  cursor: pointer;
 }
 
 .section-head:hover {
@@ -113,8 +116,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  cursor: pointer;
   transition: background 0.2s;
+}
+
+.item:not(.editing) .item-head {
+  cursor: pointer;
 }
 
 .item-head:hover {

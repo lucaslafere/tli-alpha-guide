@@ -22,9 +22,9 @@ export const SubSection: React.FC<SubSectionProps> = ({
   editMode,
 }) => {
   return (
-    <div className="item">
-      <div className={`item-head ${open ? 'open' : ''}`}>
-        <div className="item-title" onClick={onToggle}>
+    <div className={`item ${editMode ? 'editing' : ''}`}>
+      <div className={`item-head ${open ? 'open' : ''}`} onClick={!editMode ? onToggle : undefined}>
+        <div className="item-title">
           {editMode ? (
             <input
               type="text"
@@ -49,7 +49,7 @@ export const SubSection: React.FC<SubSectionProps> = ({
               ×
             </button>
           )}
-          <span className="chevron" onClick={onToggle}></span>
+          <span className="chevron"></span>
         </div>
       </div>
       {(editMode || open) && (

@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express, { Request, Response } from 'express';
 import fs from 'fs';
-import type { Multer } from 'multer';
+import type { Request as ExpressRequest } from 'express';
 import multer from 'multer';
 import path from 'path';
 
@@ -11,7 +11,8 @@ type Guide = { id: string; title: string; hero: string; sections: Section[] };
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const dataDir = path.resolve(__dirname, '..', 'data');
 const guidesFile = path.join(dataDir, 'guides.json');
@@ -114,8 +115,7 @@ app.post('/api/guides', (req: Request, res: Response) => {
 // Upload endpoint: accepts form-data with 'file' and 'sectionId'
 app.post('/api/guides/:id/uploads', upload.single('file'), (req: Request, res: Response) => {
   const id = req.params.id;
-  // @ts-expect-error - multer augments req with file
-  const file = req as unknown as Express.Multer.File;
+    const file = (req as ExpressRequest & { file: Express.Multer.File }).file;
   const sectionId = (req.body && req.body.sectionId) as string | undefined;
   if (!file) return res.status(400).json({ error: 'No file uploaded' });
 
