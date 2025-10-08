@@ -1,8 +1,8 @@
 [
   {
     "id": "iris_growing_breeze",
-    "title": "Iris - The Growing Breeze",
-    "hero": "Iris",
+    "title": "Iris - The Growing Breeze (Iris 1)",
+    "hero": "Iris 1 Guide - Using Flame Spirit for leveling, which can transition to Thunder Spirit or Erosion Spirit later.",
     "sections": [
       {
         "id": "campaign",
@@ -15,10 +15,22 @@
           },
           {
             "title": "Act 2",
-            "content": "Transition to ability Z, prioritize gear with stat A."
+            "content": "Transition to ability Z, prioritize gear with stat A.",
+            "open": true
+          },
+          {
+            "title": "Act 3",
+            "content": "",
+            "open": true
           }
         ],
-        "open": true
+        "open": false
+      },
+      {
+        "id": "section_1759884000254",
+        "title": "Early Maps",
+        "items": [],
+        "open": false
       }
     ]
   }
