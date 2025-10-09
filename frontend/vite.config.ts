@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/tli-alpha-guide/',
   server: {
     port: 5173,
   },
