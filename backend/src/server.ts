@@ -1,7 +1,7 @@
 import cors from 'cors';
+import type { Request as ExpressRequest } from 'express';
 import express, { Request, Response } from 'express';
 import fs from 'fs';
-import type { Request as ExpressRequest } from 'express';
 import multer from 'multer';
 import path from 'path';
 
@@ -115,7 +115,7 @@ app.post('/api/guides', (req: Request, res: Response) => {
 // Upload endpoint: accepts form-data with 'file' and 'sectionId'
 app.post('/api/guides/:id/uploads', upload.single('file'), (req: Request, res: Response) => {
   const id = req.params.id;
-    const file = (req as ExpressRequest & { file: Express.Multer.File }).file;
+  const file = (req as ExpressRequest & { file: Express.Multer.File }).file;
   const sectionId = (req.body && req.body.sectionId) as string | undefined;
   if (!file) return res.status(400).json({ error: 'No file uploaded' });
 
