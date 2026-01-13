@@ -68,10 +68,7 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <div className={`section ${editMode ? 'editing' : ''}`}>
-      <div
-        className={`section-head ${open ? 'open' : ''}`}
-        onClick={!editMode ? onToggle : undefined}
-      >
+      <div className={`section-head ${open ? 'open' : ''}`} onClick={onToggle}>
         {editMode ? (
           <input
             type="text"
@@ -143,14 +140,19 @@ export const Section: React.FC<SectionProps> = ({
                 className={`section-item ${draggingIndex === index ? 'dragging' : ''}`}
               >
                 {editMode && (
-                  <div
-                    className="drag-handle-area"
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, index)}
-                    onDragOver={(e) => handleDragOver(e, index)}
-                    onDragEnd={handleDragEnd}
-                  >
-                    <div className="drag-handle">⋮⋮</div>
+                  <div className="drag-handle-area">
+                    <div
+                      className="drag-handle"
+                      draggable
+                      onDragStart={(e) => handleDragStart(e, index)}
+                      onDragOver={(e) => handleDragOver(e, index)}
+                      onDragEnd={handleDragEnd}
+                      onClick={(e) => e.stopPropagation()}
+                      role="button"
+                      aria-label="Drag item"
+                    >
+                      ⋮⋮
+                    </div>
                   </div>
                 )}
                 <SubSection
