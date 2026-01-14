@@ -11,6 +11,7 @@ export default function GuidePage() {
   const { guideId } = useParams();
   const [guide, setGuide] = useState<Guide | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [draggingSectionIndex, setDraggingSectionIndex] = useState<number | null>(null);
   // States for guide editing
   const [allExpanded, setAllExpanded] = useState(false);
 
@@ -95,6 +96,30 @@ export default function GuidePage() {
       .then((r) => setGuide(r.data));
   }
 
+  const handleSectionDragStart = (index: number) => {
+    setDraggingSectionIndex(index);
+  };
+
+  const handleSectionDragOver = (index: number) => {
+    if (draggingSectionIndex === null) return;
+    setGuide((g) => {
+      if (!g) return g;
+      const newSections = [...g.sections];
+      const dragged = newSections[draggingSectionIndex];
+      newSections.splice(draggingSectionIndex, 1);
+      newSections.splice(index, 0, dragged);
+      return {
+        ...g,
+        sections: newSections,
+      };
+    });
+    setDraggingSectionIndex(index);
+  };
+
+  const handleSectionDragEnd = () => {
+    setDraggingSectionIndex(null);
+  };
+
   // Save guide data to server
 
   if (!guide) return <div>Loading...</div>;
@@ -122,15 +147,19 @@ export default function GuidePage() {
       </div>
 
       <div className="sections">
-        {guide.sections.map((s) => (
+        {guide.sections.map((s, idx) => (
           <Section
             key={s.id}
             id={s.id}
+            index={idx}
             title={s.title}
             items={s.items}
             open={s.open}
             editMode={editMode}
             guideId={guideId || ''}
+            onSectionDragStart={handleSectionDragStart}
+            onSectionDragOver={handleSectionDragOver}
+            onSectionDragEnd={handleSectionDragEnd}
             onToggle={() => toggleSection(s.id)}
             onUpdateItems={(items) => {
               setGuide((g) =>

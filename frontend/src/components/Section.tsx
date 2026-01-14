@@ -18,6 +18,10 @@ interface SectionProps {
   guideId: string;
   onToggle: () => void;
   onUpdateItems: (items: Item[]) => void;
+  index?: number;
+  onSectionDragStart?: (index: number) => void;
+  onSectionDragOver?: (index: number) => void;
+  onSectionDragEnd?: () => void;
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -29,6 +33,10 @@ export const Section: React.FC<SectionProps> = ({
   guideId,
   onToggle,
   onUpdateItems,
+  index,
+  onSectionDragStart,
+  onSectionDragOver,
+  onSectionDragEnd,
 }) => {
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
 
@@ -69,6 +77,30 @@ export const Section: React.FC<SectionProps> = ({
   return (
     <div className={`section ${editMode ? 'editing' : ''}`}>
       <div className={`section-head ${open ? 'open' : ''}`} onClick={onToggle}>
+        {editMode && typeof index === 'number' && (
+          <div
+            className="section-drag-handle"
+            draggable
+            onDragStart={(e) => {
+              e.stopPropagation();
+              onSectionDragStart && onSectionDragStart(index);
+            }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onSectionDragOver && onSectionDragOver(index);
+            }}
+            onDragEnd={(e) => {
+              e.stopPropagation();
+              onSectionDragEnd && onSectionDragEnd();
+            }}
+            role="button"
+            aria-label="Drag section"
+            onClick={(e) => e.stopPropagation()}
+          >
+            ⋮⋮
+          </div>
+        )}
         {editMode ? (
           <input
             type="text"
